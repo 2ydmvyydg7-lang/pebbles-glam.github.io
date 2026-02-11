@@ -7,112 +7,176 @@
 
 <style>
 body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#f5f5f5;
+  margin:0;
+  font-family: 'Arial', sans-serif;
+  background:#f6f6f6;
 }
+
 header{
-    background:white;
-    text-align:center;
-    padding:80px 20px;
+  background:white;
+  text-align:center;
+  padding:60px 20px;
 }
+
 h1{
-    letter-spacing:3px;
-    margin:0;
+  letter-spacing:3px;
+  margin:0;
 }
+
 .subtitle{
-    color:#777;
-    margin-top:10px;
+  color:#777;
+  margin-top:10px;
 }
-.section{
-    padding:60px 20px;
-    text-align:center;
+
+.container{
+  padding:40px 20px;
+  max-width:1200px;
+  margin:auto;
 }
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:14px 30px;
-    background:#d81b60;
-    color:white;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
-.btn:hover{
-    background:#b7154f;
+
+.card{
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  padding-bottom:20px;
 }
-.box{
-    background:white;
-    max-width:700px;
-    margin:40px auto;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.05);
-    text-align:left;
+
+.card img{
+  width:100%;
+  height:380px;
+  object-fit:cover;
 }
-footer{
-    background:white;
-    padding:40px;
-    text-align:center;
-    font-size:14px;
-    color:#555;
+
+.card h3{
+  padding:15px;
+  margin:0;
 }
-.small{
-    font-size:14px;
-    color:#777;
+
+.price{
+  padding:0 15px;
+  font-weight:bold;
+  font-size:18px;
+}
+
+select{
+  margin:10px 15px;
+  padding:10px;
+  width:calc(100% - 30px);
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+button{
+  margin:10px 15px;
+  padding:12px;
+  width:calc(100% - 30px);
+  border:none;
+  border-radius:30px;
+  background:#e91e63;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:disabled{
+  background:gray;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-    <h1>PEBBLES GLAM CLOSET</h1>
-    <p class="subtitle">Minimal Cherry Glam • ร้านเช่าชุดออกงาน</p>
-
-    <a class="btn"
-    href="https://forms.gle/LvxXHBTp6qWjj6FH9"
-    target="_blank">
-    จองชุดออนไลน์
-    </a>
-
-    <p class="small">
-    เพื่อความปลอดภัยของทั้งสองฝ่าย ทางร้านมีการยืนยันตัวตนก่อนทำการเช่าทุกครั้ง
-    </p>
+<h1>PEBBLES GLAM CLOSET</h1>
+<div class="subtitle">ร้านเช่าชุดออกงาน · Minimal Cherry Glam</div>
 </header>
 
-<div class="section">
-
-<div class="box">
-<h2>ขั้นตอนการเช่า</h2>
-1. กดปุ่ม “จองชุดออนไลน์” และกรอกข้อมูลให้ครบถ้วน<br><br>
-2. อัปโหลดบัตรประชาชน (เขียนกำกับว่า “ใช้สำหรับเช่าชุดร้าน PEBBLES GLAM CLOSET เท่านั้น”)<br><br>
-3. แนบแคปหน้าโปรไฟล์ Instagram หรือ Facebook เพื่อยืนยันตัวตน<br><br>
-4. หลังส่งฟอร์ม กรุณาทัก LINE ร้าน @506wxved<br>
-และแจ้งว่า “กดจองผ่านเว็บไซต์แล้ว”<br><br>
-5. ส่งสลิปใน LINE เพื่อให้แอดมินตรวจสอบและล็อกสินค้าให้ค่ะ 💕
+<div class="container">
+<div class="grid" id="products"></div>
 </div>
 
-<div class="box">
-<h2>เงื่อนไขการเช่า</h2>
-• ลูกค้าต้องชำระเงินเต็มจำนวนก่อนจัดส่งสินค้า<br>
-• สินค้าต้องส่งคืนภายในวันที่กำหนด<br>
-• กรณีสินค้าชำรุด สูญหาย หรือมีคราบรุนแรง ทางร้านขอสงวนสิทธิ์เรียกเก็บค่าเสียหายเพิ่มเติม<br>
-• ข้อมูลส่วนบุคคลที่ลูกค้าให้ไว้ ใช้เพื่อการเช่าชุดเท่านั้น และจะไม่เผยแพร่โดยเด็ดขาด
-</div>
+<script>
 
-</div>
+const sheetID = "129xvPD8_Sx0pwUMfbWW9gmm2dORKShwrYLIGFtIPkKA";
+const sheetName = "ชีต1";
+const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
-<footer>
-📍 ที่อยู่สำหรับส่งคืนชุด<br><br>
-Pebbles Glam<br>
-488/96 ม.8 ต.บางเลน<br>
-อ.บางเลน จ.นครปฐม 73130<br>
-โทร 094-394-7154
-<br><br>
-© 2026 PEBBLES GLAM CLOSET
-</footer>
+fetch(url)
+.then(res => res.json())
+.then(data => {
+
+  const container = document.getElementById("products");
+
+  data.forEach(item => {
+
+    if(!item.name) return;
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = item.image;
+    card.appendChild(img);
+
+    const title = document.createElement("h3");
+    title.innerText = item.name;
+    card.appendChild(title);
+
+    const select = document.createElement("select");
+    select.innerHTML = `
+      <option value="1">1 วัน - ${item.price_1} บาท</option>
+      <option value="3">3 วัน - ${item.price_3} บาท</option>
+      <option value="5">5 วัน - ${item.price_5} บาท</option>
+      <option value="7">7 วัน - ${item.price_7} บาท</option>
+    `;
+    card.appendChild(select);
+
+    const priceText = document.createElement("div");
+    priceText.className = "price";
+    priceText.innerText = "ราคา: " + item.price_1 + " บาท";
+    card.appendChild(priceText);
+
+    select.addEventListener("change", () => {
+      const days = select.value;
+      const price = item["price_"+days];
+      priceText.innerText = "ราคา: " + price + " บาท";
+    });
+
+    const button = document.createElement("button");
+    button.innerText = item.status === "Booked" ? "ถูกจองแล้ว" : "จองชุดนี้";
+
+    if(item.status === "Booked"){
+      button.disabled = true;
+    }
+
+    button.onclick = () => {
+      const days = select.value;
+      const price = item["price_"+days];
+
+      const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfo1heRu6VleMtYmpiPpfLrevYBK75oCMahNu2KvDmgDn7SAg/viewform?usp=pp_url"
+      + "&entry.1793199050=" + encodeURIComponent(item.name)
+      + "&entry.1884265043=" + encodeURIComponent(days + " วัน")
+      + "&entry.304781863=" + encodeURIComponent(price);
+
+      window.open(formURL, "_blank");
+    };
+
+    card.appendChild(button);
+
+    container.appendChild(card);
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
